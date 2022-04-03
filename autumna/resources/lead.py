@@ -103,6 +103,13 @@ class Lead:
 
         category_specific_data = obj['categorySpecificData']
 
+        visit_date = None
+        if category_specific_data.get('visitDate'):
+            visit_date = datetime.datetime.strptime(
+                category_specific_data['visitDate'],
+                '%Y-%m-%d'
+            ).date()
+
         return cls(
             obj['id'],
             Category.from_json_type(obj['category']),
@@ -121,7 +128,7 @@ class Lead:
             obj['funding'],
             obj['timescales'],
             instruction=category_specific_data.get('instruction'),
-            visit_date=category_specific_data.get('visitDate'),
+            visit_date=visit_date,
             visit_time=category_specific_data.get('visitTime'),
             email_permission=category_specific_data.get('emailPermission'),
             phone_permission=category_specific_data.get('phonePermission'),
