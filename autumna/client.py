@@ -39,8 +39,6 @@ class APIClient:
         if r.status_code == 200:
             return r.json()
 
-        print(r.content)
-
         # Raise an error related to the response
         try:
             error_message = r.json().get('message')
