@@ -141,8 +141,8 @@ class Lead:
     def many(
         cls,
         api_client,
-        date_from=None,
-        date_to=None,
+        date_time_from=None,
+        date_time_to=None,
         is_anonymised=None,
         category_id=None,
         service_id=None
@@ -150,11 +150,11 @@ class Lead:
 
         params = {}
 
-        if date_from is not None:
-            params['dateFrom'] = date_from.strftime('%Y-%m-%d')
+        if date_time_from is not None:
+            params['dateTimeFrom'] = date_time_from.strftime('%Y-%m-%dT%H:%M:%S')
 
-        if date_to is not None:
-            params['dateTo'] = date_to.strftime('%Y-%m-%d')
+        if date_time_to is not None:
+            params['dateTimeTo'] = date_time_to.strftime('%Y-%m-%dT%H:%M:%S')
 
         if is_anonymised is not None:
             params['isAnonymised'] = is_anonymised
