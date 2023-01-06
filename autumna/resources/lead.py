@@ -97,7 +97,7 @@ class Lead:
     def from_json_type(cls, obj):
 
         if '.' in obj['date']:
-            obj['date'] = obj['date'].split('.', 0) + 'Z'
+            obj['date'] = obj['date'].split('.')[0] + 'Z'
 
         date_time = datetime.datetime.strptime(
             obj['date'],
